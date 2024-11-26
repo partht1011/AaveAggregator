@@ -21,7 +21,8 @@
   "description": "Aave Aggregator",
   "dependencies": {
     "@aave/core-v3": "^1.19.3",
-    "@openzeppelin/contracts": "^5.1.0"
+    "@openzeppelin/contracts": "^5.1.0",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",

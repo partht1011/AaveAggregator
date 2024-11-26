@@ -63,8 +63,8 @@ describe("AaveAggregator", function () {
         await dai.connect(user2).approve(await aggregator.getAddress(), ethers.parseEther('100'))
         await aggregator.connect(user2).deposit(ethers.parseEther('100'))
 
-        const user1Share = await aggregator.connect(user1).getShare()
-        const user2Share = await aggregator.connect(user2).getShare()
+        const user1Share = await aggregator.getShare(user1)
+        const user2Share = await aggregator.getShare(user2)
 
         console.log("   User1 amount: ", ethers.formatEther(await dai.balanceOf(user1)));
         console.log("   User2 amount: ", ethers.formatEther(await dai.balanceOf(user2)));
@@ -75,10 +75,10 @@ describe("AaveAggregator", function () {
     it("user1 and user2 withdraw DAI from the pool", async () => {
         await timeTravel(60 * 60 * 24 * 365)
 
-        const user1Share = await aggregator.connect(user1).getShare()
+        const user1Share = await aggregator.getShare(user1)
         await aggregator.connect(user1).withdraw(user1Share)
 
-        const user2Share = await aggregator.connect(user2).getShare()
+        const user2Share = await aggregator.getShare(user2)
         await aggregator.connect(user2).withdraw(user2Share)
 
         const user1Amount = await dai.balanceOf(user1);
